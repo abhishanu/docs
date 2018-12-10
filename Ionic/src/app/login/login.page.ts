@@ -1,7 +1,7 @@
+import { PhoneValidator } from './../phone.validator';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-
-import { PhoneValidator } from '../phone.validator';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -24,23 +24,32 @@ export class LoginPage implements OnInit {
     ]
   };
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, public alertCtrl: AlertController)  {
   }
 
   ngOnInit() {
     this.loginDetails = this.formBuilder.group({
-      contact: ['', Validators.length === 10 ],
-      pwd: ['value', Validators.required, Validators.minLength(5)]
+      contact: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
+      pwd: ['value', Validators.compose([Validators.required, Validators.minLength(5)])]
     });
   }
 
   login() {
-    console.log('Clicked');
     if (this.loginDetails.valid) {
-      console.log('Valid Form');
+      this.presentAlert('Log in successfully');
     } else {
-      console.log('Invalid Form');
+      this.presentAlert('Invalid');
     }
+  }
+
+  async presentAlert(msg: string) {
+    const alert = await this.alertCtrl.create({
+      header: 'Alert',
+      message: msg,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
 }
