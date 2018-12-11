@@ -8,16 +8,16 @@
     <form [formGroup]="loginDetails" (submit)="login()">
       <ion-item>
         <!-- <ion-label floating>Contact </ion-label> -->
-        <ion-input type="email" placeholder="Contact" [(ngModel)]="Userlogin.contact" formControlName="contact"></ion-input>
+        <ion-input type="email" placeholder="Contact *" formControlName="contact"></ion-input>
       </ion-item>
 
       <ion-item>
           <!-- <ion-label floating>Password </ion-label> -->
-          <ion-input type="password" placeholder="Password" [(ngModel)]="Userlogin.pwd" formControlName="pwd"></ion-input>
+          <ion-input type="password" placeholder="Password *" formControlName="pwd"></ion-input>
       </ion-item>
     
        <ion-button expand="full"  type="submit" color="primary" [disabled]=!loginDetails.valid> Login</ion-button>
-        <div class="validation-errors">
+        <div class="validation-errors" *ngIf="loginDetails.get('contact').touched && loginDetails.get('contact').invalid">
           <ng-container *ngFor="let validation of validation_messages.contact" >
             <div class="error-message" *ngIf="loginDetails.get('contact').hasError(validation.type) && (loginDetails.get('contact').dirty || loginDetails.get('pwd').touched)">
           {{ validation.message }}

@@ -14,7 +14,7 @@ export class LoginPage implements OnInit {
 
   validation_messages = {
     'contact': [
-    { type: 'required', message: 'You must enter a contact no.'},
+    { type: 'required', message: 'Please enter a contact no.'},
     { type: 'length', message: 'Contact no must contain 10 digits'},
     { type: 'pattern', message: 'Contact no should be composed of numbers only.'}
     ],
@@ -30,13 +30,19 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     this.loginDetails = this.formBuilder.group({
       contact: ['', Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(10)])],
-      pwd: ['value', Validators.compose([Validators.required, Validators.minLength(5)])]
+      pwd: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
     });
   }
 
   login() {
     if (this.loginDetails.valid) {
-      this.presentAlert('Log in successfully');
+    this.Userlogin.contact = this.loginDetails.get('contact').value;
+      this.presentAlert('Log in successfully with:' + this.Userlogin.contact);
+       this.loginDetails.setValue({
+         contact: '',
+         pwd: ''
+       });
+      this.loginDetails.get('contact').markAsUntouched();
     } else {
       this.presentAlert('Invalid');
     }
