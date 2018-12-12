@@ -70,4 +70,8 @@ export class UnlockWithPinPage implements OnInit {
     this.genratePin = this.genratePin.substr(0, this.genratePin.length - 1);
   }
 
+  skipPinGenration() {
+    this.navigate.navigateForward('/home');
+  }
+
 }
