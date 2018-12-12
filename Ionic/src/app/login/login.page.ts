@@ -1,7 +1,7 @@
 import { PhoneValidator } from './../phone.validator';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { AlertController } from '@ionic/angular';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +24,7 @@ export class LoginPage implements OnInit {
     ]
   };
 
-  constructor(private formBuilder: FormBuilder, public alertCtrl: AlertController)  {
+  constructor(private formBuilder: FormBuilder, private alertCtrl: AlertController, private navigate: NavController)  {
   }
 
   ngOnInit() {
@@ -38,11 +38,11 @@ export class LoginPage implements OnInit {
     if (this.loginDetails.valid) {
     this.Userlogin.contact = this.loginDetails.get('contact').value;
       this.presentAlert('Log in successfully with:' + this.Userlogin.contact);
-       this.loginDetails.setValue({
-         contact: '',
-         pwd: ''
-       });
-      this.loginDetails.get('contact').markAsUntouched();
+      //  this.loginDetails.setValue({
+      //    contact: '',
+      //    pwd: ''
+      //  });
+      // this.loginDetails.get('contact').markAsUntouched();
     } else {
       this.presentAlert('Invalid');
     }
@@ -51,11 +51,23 @@ export class LoginPage implements OnInit {
   async presentAlert(msg: string) {
     const alert = await this.alertCtrl.create({
       header: 'Alert',
+      cssClass: 'custom-alert-box',
       message: msg,
-      buttons: ['OK']
+      buttons: [{
+          text: 'Ok',
+          cssClass: 'alert-Buttons',
+          handler: () => {
+            this.goToCreatePinScreen();
+          }
+        }
+      ]
     });
 
     await alert.present();
+  }
+
+  goToCreatePinScreen() {
+    this.navigate.navigateForward('/unlockWithPin');
   }
 
 }

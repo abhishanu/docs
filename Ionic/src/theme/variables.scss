@@ -36,7 +36,7 @@
   --ion-color-success-tint: #28e070;
 
   /** warning **/
-  --ion-color-warning: #ffce00;
+  --ion-color-warning: #0b5841;
   --ion-color-warning-rgb: 255, 206, 0;
   --ion-color-warning-contrast: #ffffff;
   --ion-color-warning-contrast-rgb: 255, 255, 255;
@@ -75,16 +75,14 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
-   /** light **/
-   --ion-color-signUp: rgb(226, 71, 71);
+   /** signUp **/
+   --ion-color-signUp: #6666ff;
    --ion-color-light-rgb: 244, 244, 244;
    --ion-color-light-contrast: #000000;
    --ion-color-light-contrast-rgb: 0, 0, 0;
    --ion-color-light-shade: #d7d8da;
    --ion-color-light-tint: #f5f6f9;
 }
-
-
 
 $colors: (
   primary:    #8B4789,
@@ -97,5 +95,19 @@ $colors: (
   color3 : #07904d,
   color4: #673665,
   brown: #B75E33,
-  ycBlue: #638AF1
+  ycBlue: #638AF1,
+  signUp: #6666ff
 );
+
+.custom-alert-box >  .alert-wrapper{
+  color: whitesmoke;
+  background-color: #397f9c;
+}
+
+.custom-alert-box .alert-Buttons{
+   background-color: whitesmoke;
+}
+
+.custom-alert-box .alert-message{
+  color: whitesmoke;
+}

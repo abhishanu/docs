@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonServiceService } from '../Services/common-service.service';
+import { CommonService } from '../Services/common.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +7,7 @@ import { CommonServiceService } from '../Services/common-service.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  constructor(private dataService: CommonServiceService) {}
+  constructor(private dataService: CommonService) {}
 
   public title: string;
   public note: string;

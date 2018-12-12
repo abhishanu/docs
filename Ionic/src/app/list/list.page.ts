@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonServiceService } from '../Services/common-service.service';
+import { CommonService } from '../Services/common.service';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -11,7 +11,7 @@ export class ListPage implements OnInit {
   private selectedItem: any;
   public isItemLoaded: Boolean = false;
   public items: Array<{ title: string; note: string}> = [];
-  constructor(private dataService: CommonServiceService, private nav: NavController) {
+  constructor(private dataService: CommonService, private nav: NavController) {
   }
 
   ngOnInit() {}

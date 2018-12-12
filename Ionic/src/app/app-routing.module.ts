@@ -21,7 +21,8 @@ const routes: Routes = [
   { path: 'login',
    loadChildren: './login/login.module#LoginPageModule'
   },
-  { path: 'register', loadChildren: './register/register.module#RegisterPageModule' }
+  { path: 'register', loadChildren: './register/register.module#RegisterPageModule' },
+  { path: 'unlockWithPin', loadChildren: './login/unlock-with-pin/unlock-with-pin.module#UnlockWithPinPageModule' }
 ];
 
 @NgModule({
