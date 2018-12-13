@@ -22,7 +22,7 @@ export class CommonService {
     });
   }
 
-  public getAppPin() {
+  public getAppPin(): String {
     return this.appPin;
   }
 
@@ -35,8 +35,15 @@ export class CommonService {
     return this.storage.get('pin').then(res => {
       if (res) {
         this.appPin = res;
+      } else {
+        this.appPin = '';
       }
     });
+  }
+
+  public clearAppPin() {
+    this.appPin = '';
+    this.storage.remove('pin');
   }
 
   public deleteItemFromList() {
