@@ -74,4 +74,5 @@ export class CommonService {
     });
     return await loading.present();
   }
+
 }
