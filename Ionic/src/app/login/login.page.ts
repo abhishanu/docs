@@ -2,7 +2,8 @@ import { PhoneValidator } from './../phone.validator';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AlertController, NavController } from '@ionic/angular';
-import { CommonService } from '../Services/common.service';
+import { CommonService } from '../Services/common/common.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -28,11 +29,12 @@ export class LoginPage implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private alertCtrl: AlertController,
               private navigate: NavController,
-              private commonService: CommonService)  {
+              private commonService: CommonService,
+              private router: Router)  {
   }
 
   ngOnInit() {
-    this.isPinExists();
+    this.commonService.isPinExists();
     this.createFormValidator();
   }
 
@@ -43,15 +45,8 @@ export class LoginPage implements OnInit {
     });
   }
 
-  ionViewCanEnter() {
-    this.isPinExists();
-  }
-
-  isPinExists() {
-    if (this.commonService.getAppPin() !== undefined || this.commonService.getAppPin() !== null || this.commonService.getAppPin() === '') {
-      console.log('pin existed');
-      this.navigate.navigateForward('check-pin');
-    }
+  ionViewWillEnter() {
+    this.commonService.isPinExists();
   }
 
   login() {

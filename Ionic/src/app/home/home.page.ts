@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonService } from '../Services/common.service';
+import { CommonService } from '../Services/common/common.service';
 
 @Component({
   selector: 'app-home',
@@ -19,5 +19,9 @@ export class HomePage {
     this.dataService.addItemToList(this.title, this.note);
     this.title = '';
     this.note = '';
+  }
+
+  ionViewWillEnter() {
+    console.log('HomePage Enter');
   }
 }

@@ -1,4 +1,4 @@
-import { CommonService } from '../../Services/common.service';
+import { CommonService } from '../../Services/common/common.service';
 import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
 
@@ -32,6 +32,10 @@ export class UnlockWithPinPage implements OnInit {
     if (checkPin) {
       this.navigate.navigateForward('/home');
     }
+  }
+
+  skipPinGeneration() {
+    this.navigate.navigateForward('list');
   }
 
   async presentAlert(msg: string) {

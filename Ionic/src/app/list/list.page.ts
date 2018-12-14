@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from '../Services/common.service';
+import { CommonService } from '../Services/common/common.service';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -17,6 +17,7 @@ export class ListPage implements OnInit {
   ngOnInit() {}
 
   ionViewWillEnter() {
+    console.log('ListPage Eneterd');
    this.items = this.dataService.getList();
     if (this.items.length !== 0) {
       this.isItemLoaded = true;

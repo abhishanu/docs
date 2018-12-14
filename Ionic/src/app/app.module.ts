@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import {IonicStorageModule} from '@ionic/storage';
-import { AuthGuardService } from './Services/auth-gaurd.service';
+import { AuthGuardService } from './Services/auth/auth-gaurd.service';
 
 @NgModule({
   declarations: [AppComponent],
